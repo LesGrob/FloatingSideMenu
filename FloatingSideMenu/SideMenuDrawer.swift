@@ -225,6 +225,7 @@ extension SideMenuDrawer {
     
     private func relayoutSubviews(proportion: CGFloat, index: Int) {
         guard let rview = controller.items[index].viewController.view else { return }
+        controller.items[index].viewController.proportion = proportion
         for view in rview.subviews {
             view.frame = CGRect(
                 x: view.frame.minX * proportion,

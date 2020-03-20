@@ -11,4 +11,5 @@ import Foundation
 
 open class SideMenuItemController: UIViewController {
     public var sideMenuDelegate: SideMenuDelegate?
+    public internal(set) var proportion: CGFloat = 1.0
 }
