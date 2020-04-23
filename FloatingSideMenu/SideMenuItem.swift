@@ -42,8 +42,8 @@ public protocol SideMenuItemCellDelegate: UIView {
 public class SideMenuItemCell: UIView, SideMenuItemCellDelegate {
     var icon: UIImageView = {
         let view = UIImageView()
-        view.tintColor = .gray
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.tintColor = .gray
         return view
     }()
     
@@ -66,12 +66,12 @@ public class SideMenuItemCell: UIView, SideMenuItemCellDelegate {
             icon.centerYAnchor.constraint(equalTo: centerYAnchor),
             icon.heightAnchor.constraint(equalToConstant: 22),
             icon.widthAnchor.constraint(equalToConstant: 22),
-            icon.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 25),
+            icon.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15),
         ])
         addConstraints([
             title.centerYAnchor.constraint(equalTo: centerYAnchor),
         ])
-        titleLeadingConstraint = title.leadingAnchor.constraint(equalTo: icon.trailingAnchor, constant: 25)
+        titleLeadingConstraint = title.leadingAnchor.constraint(equalTo: icon.trailingAnchor, constant: 15)
         titleLeadingConstraint.isActive = true
     }
     
@@ -83,7 +83,7 @@ public class SideMenuItemCell: UIView, SideMenuItemCellDelegate {
         self.title.text = item.title
         if let icon = item.icon {
             self.icon.image = icon.withRenderingMode(.alwaysTemplate)
-            self.titleLeadingConstraint.constant = 25
+            self.titleLeadingConstraint.constant = 15
         } else  {
             self.icon.image = nil
             self.titleLeadingConstraint.constant = -22

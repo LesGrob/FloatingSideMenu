@@ -22,18 +22,15 @@ public protocol SideMenuDelegate {
 open class SideMenu: UIViewController {
     private var drawer: SideMenuDrawer!
     
-    private var menuItems: [SideMenuItem] = []
-    public var items: [SideMenuItem] { get { return menuItems } }
-    
-    private var menuPath: SideMenuPath = SideMenuPath()
-    public var path: SideMenuPath { get { return self.menuPath } }
-    
+    public private(set) var items: [SideMenuItem] = []
+    public private(set) var path: SideMenuPath = SideMenuPath()
     public var menuState: SideMenuState { get { return drawer.menuState } }
-    
     public var menuItemCellClass: SideMenuItemCellDelegate.Type = SideMenuItemCell.self
     
     public var openSwipeIsEnabled: Bool = true
     public var closeSwipeIsEnabled: Bool = true
+    
+    public var disableViewInteraction: Bool = true
     
     public var topView: UIView?
     public var bottomView: UIView?
@@ -41,7 +38,7 @@ open class SideMenu: UIViewController {
     
     public init(items: [SideMenuItem]) {
         super.init(nibName: nil, bundle: nil)
-        self.menuItems = items
+        self.items = items
     }
     
     required public init?(coder: NSCoder) {
@@ -55,16 +52,16 @@ open class SideMenu: UIViewController {
     }
     
     public func selectItem(index: Int) {
-        guard index >= 0, index < menuItems.count, index != menuPath.selectedIndex else { return }
+        guard index >= 0, index < items.count, index != path.selectedIndex else { return }
         
-        let newPath = SideMenuPath(previousIndex: menuPath.selectedIndex, selectedIndex: index)
+        let newPath = SideMenuPath(previousIndex: path.selectedIndex, selectedIndex: index)
         drawer.drawMenu(for: newPath)
-        menuPath = newPath
+        path = newPath
     }
     
     
     public func validPath(path: SideMenuPath) -> Bool {
-        return (path.previousIndex == nil || (path.previousIndex! >= 0 && path.previousIndex! < menuItems.count)) &&
-            (path.selectedIndex == nil || (path.selectedIndex! >= 0 && path.selectedIndex! < menuItems.count))
+        return (path.previousIndex == nil || (path.previousIndex! >= 0 && path.previousIndex! < items.count)) &&
+            (path.selectedIndex == nil || (path.selectedIndex! >= 0 && path.selectedIndex! < items.count))
     }
 }

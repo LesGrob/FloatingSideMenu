@@ -39,58 +39,61 @@ extension SideMenuDrawer {
         guard controller.validPath(path: path) else { return }
         let oldPath = controller.path
         
-        UIView.animate(withDuration: 0.5, delay: 0.1,
-                       usingSpringWithDamping: 0.8,
-                       initialSpringVelocity: 0,
-                       options: .curveEaseInOut,
-                       animations: {
-                        
-                        if oldPath.previousIndex != path.selectedIndex {
-                            if let index = oldPath.previousIndex {
-                                let y = (self.decorator.itemViewFullSize.height - self.decorator.itemViewSmallSize.height)/2
-                                self.controller.items[index].viewController.view.frame = CGRect(
-                                    x: UIScreen.main.bounds.width,
-                                    y: y,
-                                    width: self.decorator.itemViewSmallSize.width,
-                                    height: self.decorator.itemViewSmallSize.height)
-                                self.controller.items[index].viewController.view.alpha = 0
-                            }
-                        }
-                        
-                        if let previousIndex = path.previousIndex {
-                            if let previousView = self.controller.items[previousIndex].viewController.view {
-                                let proportion = self.decorator.itemViewSmallSize.height / previousView.frame.height
-                                self.relayoutSubviews(proportion: proportion, index: previousIndex)
-                            }
-                            
-                            let x = self.decorator.itemViewFullSize.width * 0.615
-                            let y = (self.decorator.itemViewFullSize.height - self.decorator.itemViewSmallSize.height)/2
-                            self.controller.items[previousIndex].viewController.view.frame = CGRect(
-                                x: x,
-                                y: y,
-                                width: self.decorator.itemViewSmallSize.width,
-                                height: self.decorator.itemViewSmallSize.height)
-                            self.controller.items[previousIndex].viewController.view.alpha = 0.5
-                        }
-                        
-                        if let selectedIndex = path.selectedIndex {
-                            if let selectedView = self.controller.items[selectedIndex].viewController.view {
-                                let proportion = self.decorator.itemViewMediumSize.height / selectedView.frame.height
-                                self.relayoutSubviews(proportion: proportion, index: selectedIndex)
-                            }
-                            
-                            let x = self.decorator.itemViewFullSize.width * self.decorator.itemListProcent
-                            let y = (self.decorator.itemViewFullSize.height - self.decorator.itemViewMediumSize.height)/2
-                            self.controller.items[selectedIndex].viewController.view.frame = CGRect(
-                                x: x,
-                                y: y,
-                                width: self.decorator.itemViewMediumSize.width,
-                                height: self.decorator.itemViewMediumSize.height)
-                            self.controller.view.bringSubviewToFront(self.controller.items[selectedIndex].viewController.view)
-                            self.controller.items[selectedIndex].viewController.view.alpha = 1
-                        }
-                        
-                        self.drawItemList(for: path)
+        UIView.animate(withDuration: 0.5, delay: 0.1, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
+            
+            if oldPath.previousIndex != path.selectedIndex {
+                if let index = oldPath.previousIndex {
+                    let rect = CGRect(
+                        x: UIScreen.main.bounds.width,
+                        y: (self.decorator.itemViewFullSize.height - self.decorator.itemViewSmallSize.height)/2,
+                        width: self.decorator.itemViewSmallSize.width,
+                        height: self.decorator.itemViewSmallSize.height)
+                    
+                    self.relayoutView(
+                        viewController: self.controller.items[index].viewController,
+                        with: rect,
+                        alpha: 0)
+                    
+                   self.disableViewIteraction(viewController: self.controller.items[index].viewController, true)
+                }
+            }
+            
+            if let previousIndex = path.previousIndex {
+                let x = self.decorator.itemViewFullSize.width * 0.615
+                let y = (self.decorator.itemViewFullSize.height - self.decorator.itemViewSmallSize.height)/2
+                let rect = CGRect(
+                    x: x,
+                    y: y,
+                    width: self.decorator.itemViewSmallSize.width,
+                    height: self.decorator.itemViewSmallSize.height)
+                
+                self.relayoutView(
+                    viewController: self.controller.items[previousIndex].viewController,
+                    with: rect,
+                    alpha: 0.5)
+                
+                self.disableViewIteraction(viewController: self.controller.items[previousIndex].viewController, true)
+            }
+            
+            if let selectedIndex = path.selectedIndex {
+                let x = self.decorator.itemViewFullSize.width * self.decorator.itemListProcent
+                let y = (self.decorator.itemViewFullSize.height - self.decorator.itemViewMediumSize.height)/2
+                let rect = CGRect(
+                    x: x,
+                    y: y,
+                    width: self.decorator.itemViewMediumSize.width,
+                    height: self.decorator.itemViewMediumSize.height)
+                
+                self.relayoutView(
+                    viewController: self.controller.items[selectedIndex].viewController,
+                    with: rect,
+                    alpha: 1)
+                self.controller.view.bringSubviewToFront(self.controller.items[selectedIndex].viewController.view)
+               
+                self.disableViewIteraction(viewController: self.controller.items[selectedIndex].viewController, true)
+            }
+            
+            self.drawItemList(for: path)
         }, completion: nil)
     }
 }
@@ -100,55 +103,50 @@ extension SideMenuDrawer {
     private func expandController() {
         guard let index = controller.path.selectedIndex else { return }
         
-        UIView.animate(withDuration: 0.5, delay: 0.1,
-                       usingSpringWithDamping: 0.8,
-                       initialSpringVelocity: 0,
-                       options: .curveEaseInOut,
-                       animations: {
-                        
-                        if let rview = self.controller.items[index].viewController.view {
-                            let proportion = self.decorator.itemViewFullSize.height/rview.frame.height
-                            self.relayoutSubviews(proportion: proportion, index: index)
-                        }
-                        
-                        self.controller.items[index].viewController.view.frame = CGRect(
-                            x: 0,
-                            y: 0,
-                            width: self.decorator.itemViewFullSize.width,
-                            height: self.decorator.itemViewFullSize.height)
-                        self.controller.items[index].viewController.view.layer.cornerRadius = 0
+        UIView.animate(withDuration: 0.5, delay: 0.1,usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
+            let rect = CGRect(
+                x: 0,
+                y: 0,
+                width: self.decorator.itemViewFullSize.width,
+                height: self.decorator.itemViewFullSize.height)
+            
+            self.relayoutView(
+                viewController: self.controller.items[index].viewController,
+                with: rect,
+                alpha: 1)
+            self.controller.items[index].viewController.view.layer.cornerRadius = 0
         }, completion: { _ in
             self.menuState = .controller
+            self.disableViewIteraction(viewController: self.controller.items[index].viewController, false)
         })
     }
     
     private func collapseController() {
         guard let index = controller.path.selectedIndex else { return }
         
-        UIView.animate(withDuration: 0.5, delay: 0.1,
-                       usingSpringWithDamping: 0.8,
-                       initialSpringVelocity: 0,
-                       options: .curveEaseInOut,
-                       animations: {
-                        
-                        if let rview = self.controller.items[index].viewController.view {
-                            let proportion = self.decorator.itemViewMediumSize.height/rview.frame.height
-                            self.relayoutSubviews(proportion: proportion, index: index)
-                        }
-                        
-                        let x = self.decorator.itemViewFullSize.width * self.decorator.itemListProcent
-                        let y = (self.decorator.itemViewFullSize.height - self.decorator.itemViewMediumSize.height)/2
-                        self.controller.items[index].viewController.view.frame = CGRect(
-                            x: x,
-                            y: y,
-                            width: self.decorator.itemViewMediumSize.width,
-                            height: self.decorator.itemViewMediumSize.height)
-                        self.controller.items[index].viewController.view.layer.cornerRadius = self.decorator.controllerRadius
+        UIView.animate(withDuration: 0.5, delay: 0.1, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
+            
+            let x = self.decorator.itemViewFullSize.width * self.decorator.itemListProcent
+            let y = (self.decorator.itemViewFullSize.height - self.decorator.itemViewMediumSize.height)/2
+            let rect = CGRect(
+                x: x,
+                y: y,
+                width: self.decorator.itemViewMediumSize.width,
+                height: self.decorator.itemViewMediumSize.height)
+            
+            self.relayoutView(
+                viewController: self.controller.items[index].viewController,
+                with: rect,
+                alpha: 1)
+            
+            self.controller.items[index].viewController.view.layer.cornerRadius = self.decorator.controllerRadius
         }, completion: { _ in
             self.menuState = .menu
+            self.disableViewIteraction(viewController: self.controller.items[index].viewController, true)
         })
     }
 }
+
 extension SideMenuDrawer {
     @objc func didSelectControllerView(_ gestureRecognizer: UIGestureRecognizer) {
         guard controller.menuState != .controller, let _ = gestureRecognizer.view?.tag else { return }
@@ -183,14 +181,15 @@ extension SideMenuDrawer {
                 return
             }
             
-            let proportion = newHeight/rview.frame.height
-            self.relayoutSubviews(proportion: proportion, index: index)
-            
-            rview.frame = CGRect(
+            let rect = CGRect(
                 x: newX,
                 y: newY,
                 width: newWidth,
                 height: newHeight)
+            self.relayoutView(
+                viewController: self.controller.items[index].viewController,
+                with: rect,
+                alpha: 1)
             rview.layer.cornerRadius = newX/(self.decorator.itemViewFullSize.width * self.decorator.itemListProcent) * self.decorator.controllerRadius
         case .ended:
             if let rview = recognizer.view {
@@ -223,15 +222,17 @@ extension SideMenuDrawer {
         }
     }
     
-    private func relayoutSubviews(proportion: CGFloat, index: Int) {
-        guard let rview = controller.items[index].viewController.view else { return }
-        for view in rview.subviews {
-            view.frame = CGRect(
-                x: view.frame.minX * proportion,
-                y: view.frame.minY * proportion,
-                width: view.frame.width * proportion,
-                height: view.frame.height * proportion )
-            
+    private func relayoutView(viewController: SideMenuItemController, with frame: CGRect, alpha: CGFloat) {
+        let proportion = frame.height / viewController.view.frame.height
+        viewController.view.frame = frame
+        viewController.view.alpha = alpha
+        viewController.absoluteProportion = 1/(UIScreen.main.bounds.height / frame.height)
+        viewController.relayoutSubviews(proportion: proportion)
+    }
+    
+    private func disableViewIteraction(viewController: SideMenuItemController, _ dimm: Bool) {
+        if controller.disableViewInteraction {
+            viewController.disableViewIteraction(dimm)
         }
     }
 }

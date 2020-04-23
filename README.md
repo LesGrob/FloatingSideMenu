@@ -32,8 +32,23 @@ func application(_ application: UIApplication, didFinishLaunchingWithOptions lau
     return true
 }
 ```
-#### Important Notice
-In ```SideMenuItemController```'s view you must use frames instead of constraints. This is the problem I'm trying to solve. If you have any idea contact me, please!
+
+#### Views proportioning
+All frames proportioning automatically, except views with constraints.
+In case you want to manually change the proportions, you can use the following variables:
+
+```SideMenuItemController.proportion``` - proportion to previous frame size.
+
+```SideMenuItemController.absoluteProportion``` - proportion to ```UIScreen.main.bounds```.
+
+
+For example ```absoluteProportion``` can be used in table:
+
+```swift
+func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    return 60 * self.absoluteProportion
+}
+```
 
 ### Customization
 You can easily customize menu style.
@@ -68,8 +83,24 @@ Then set it in menu object.
 menu.menuItemCellClass = CustomSideMenuItemCell.self
 ```
 
+#### Menu configuration
+
+```swift 
+SideMenu.disableViewInteraction: Bool
+``` 
+- disable interaction on view when it collapsed. `true` by default.
+```swift 
+SideMenu.openSwipeIsEnabled: Bool
+``` 
+- enable swipe to expand view. `true` by default.
+```swift 
+SideMenu.closeSwipeIsEnabled: Bool
+``` 
+- enable swipe to collapse view. `true` by default.
+
+
 ## Demo
-<p align="center"><img src="https://raw.githubusercontent.com/LesGrob/FloatingSideMenu/master/Screenshots/FloatingSideMenu-demo.gif" /></p>
+<p align="left"><img height="600" src="https://raw.githubusercontent.com/LesGrob/FloatingSideMenu/master/Screenshots/FloatingSideMenu-demo.gif" /></p>
 
 ## Requirements
 - iOS 11.0+
