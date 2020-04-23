@@ -149,7 +149,6 @@ extension SideMenuDecorator {
             y: item.frame.minY * proportion,
             width: item.frame.width * proportion,
             height: item.frame.height * proportion )
-
         }
     }
 }

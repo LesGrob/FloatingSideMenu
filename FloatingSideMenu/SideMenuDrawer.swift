@@ -231,7 +231,7 @@ extension SideMenuDrawer {
     }
     
     private func disableViewIteraction(viewController: SideMenuItemController, _ dimm: Bool) {
-        if controller.disableViewIteraction {
+        if controller.disableViewInteraction {
             viewController.disableViewIteraction(dimm)
         }
     }
