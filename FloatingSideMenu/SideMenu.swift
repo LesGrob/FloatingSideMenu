@@ -30,6 +30,8 @@ open class SideMenu: UIViewController {
     public var openSwipeIsEnabled: Bool = true
     public var closeSwipeIsEnabled: Bool = true
     
+    public var disableViewIteraction: Bool = true
+    
     public var topView: UIView?
     public var bottomView: UIView?
     
