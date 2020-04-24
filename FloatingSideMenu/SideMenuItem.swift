@@ -9,6 +9,7 @@
 import UIKit
 import Foundation
 
+/// Menu screens path.
 public class SideMenuPath {
     public var previousIndex: Int? = nil
     public var selectedIndex: Int? = nil
@@ -21,6 +22,7 @@ public class SideMenuPath {
     }
 }
 
+/// Item of menu list.
 open class SideMenuItem {
     public var icon: UIImage?
     public var title: String
@@ -33,12 +35,14 @@ open class SideMenuItem {
     }
 }
 
+/// Menu item delegate.
 public protocol SideMenuItemCellDelegate: UIView {
     func select(_ select: Bool)
     func setData(item: SideMenuItem)
     static func cellHeight(stackWidth: CGFloat) -> CGFloat
 }
 
+/// Menu item cell.
 public class SideMenuItemCell: UIView, SideMenuItemCellDelegate {
     var icon: UIImageView = {
         let view = UIImageView()

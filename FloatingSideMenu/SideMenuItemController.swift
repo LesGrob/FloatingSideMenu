@@ -9,12 +9,21 @@
 import UIKit
 import Foundation
 
+/// Menu item UIViewController.
 open class SideMenuItemController: UIViewController {
+    /// Menu drawer delegate to toggle menu from controller and to change menu item from controller.
     public var sideMenuDelegate: SideMenuDelegate?
+    /// Proportion to previous frame size.
     public internal(set) var proportion: CGFloat = 1.0
+    /// Proportion to UIScreen.main.bounds.
     public internal(set) var absoluteProportion: CGFloat = 1.0
     
-    internal func relayoutSubviews(proportion: CGFloat) {
+    /**
+    Relayout view & it's subviews.
+    - Parameters:
+       - proportion : proportion to previous frame size.
+    */
+    internal func relayoutViewWithSubviews(proportion: CGFloat) {
         self.proportion = proportion
         self.relayoutSubviews(in: self.view)
     }
@@ -30,7 +39,12 @@ open class SideMenuItemController: UIViewController {
         }
     }
     
-    internal func disableViewIteraction(_ dimm: Bool) {
+    /**
+    Disable/enable view interaction .
+    - Parameters:
+        - dimm : disable/enable parameter.
+    */
+    internal func disableViewInteraction(_ dimm: Bool) {
         for item in view.subviews {
             item.isUserInteractionEnabled = !dimm
         }

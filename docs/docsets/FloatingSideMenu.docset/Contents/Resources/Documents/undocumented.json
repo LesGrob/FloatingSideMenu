@@ -1,0 +1,201 @@
+{
+  "warnings": [
+    {
+      "file": "/Users/nickkurochkin/Desktop/FloatingSideMenu/FloatingSideMenu/SideMenu.swift",
+      "line": 14,
+      "symbol": "SideMenuState.menu",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/nickkurochkin/Desktop/FloatingSideMenu/FloatingSideMenu/SideMenu.swift",
+      "line": 15,
+      "symbol": "SideMenuState.controller",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/nickkurochkin/Desktop/FloatingSideMenu/FloatingSideMenu/SideMenu.swift",
+      "line": 43,
+      "symbol": "SideMenu.init(items:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/nickkurochkin/Desktop/FloatingSideMenu/FloatingSideMenu/SideMenu.swift",
+      "line": 48,
+      "symbol": "SideMenu.init(coder:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/nickkurochkin/Desktop/FloatingSideMenu/FloatingSideMenu/SideMenu.swift",
+      "line": 52,
+      "symbol": "SideMenu.viewWillAppear(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/nickkurochkin/Desktop/FloatingSideMenu/FloatingSideMenu/SideMenuDecorator.swift",
+      "line": 15,
+      "symbol": "SideMenuDecorator.delegate",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/nickkurochkin/Desktop/FloatingSideMenu/FloatingSideMenu/SideMenuDecorator.swift",
+      "line": 65,
+      "symbol": "SideMenuDecorator.init(controller:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/nickkurochkin/Desktop/FloatingSideMenu/FloatingSideMenu/SideMenuDrawer.swift",
+      "line": 31,
+      "symbol": "SideMenuDrawer.menuState",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/nickkurochkin/Desktop/FloatingSideMenu/FloatingSideMenu/SideMenuDrawer.swift",
+      "line": 33,
+      "symbol": "SideMenuDrawer.init(controller:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/nickkurochkin/Desktop/FloatingSideMenu/FloatingSideMenu/SideMenuItem.swift",
+      "line": 14,
+      "symbol": "SideMenuPath.previousIndex",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/nickkurochkin/Desktop/FloatingSideMenu/FloatingSideMenu/SideMenuItem.swift",
+      "line": 15,
+      "symbol": "SideMenuPath.selectedIndex",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/nickkurochkin/Desktop/FloatingSideMenu/FloatingSideMenu/SideMenuItem.swift",
+      "line": 17,
+      "symbol": "SideMenuPath.init()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/nickkurochkin/Desktop/FloatingSideMenu/FloatingSideMenu/SideMenuItem.swift",
+      "line": 19,
+      "symbol": "SideMenuPath.init(previousIndex:selectedIndex:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/nickkurochkin/Desktop/FloatingSideMenu/FloatingSideMenu/SideMenuItem.swift",
+      "line": 27,
+      "symbol": "SideMenuItem.icon",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/nickkurochkin/Desktop/FloatingSideMenu/FloatingSideMenu/SideMenuItem.swift",
+      "line": 28,
+      "symbol": "SideMenuItem.title",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/nickkurochkin/Desktop/FloatingSideMenu/FloatingSideMenu/SideMenuItem.swift",
+      "line": 29,
+      "symbol": "SideMenuItem.viewController",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/nickkurochkin/Desktop/FloatingSideMenu/FloatingSideMenu/SideMenuItem.swift",
+      "line": 31,
+      "symbol": "SideMenuItem.init(icon:title:viewController:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/nickkurochkin/Desktop/FloatingSideMenu/FloatingSideMenu/SideMenuItem.swift",
+      "line": 40,
+      "symbol": "SideMenuItemCellDelegate.select(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/nickkurochkin/Desktop/FloatingSideMenu/FloatingSideMenu/SideMenuItem.swift",
+      "line": 41,
+      "symbol": "SideMenuItemCellDelegate.setData(item:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/nickkurochkin/Desktop/FloatingSideMenu/FloatingSideMenu/SideMenuItem.swift",
+      "line": 42,
+      "symbol": "SideMenuItemCellDelegate.cellHeight(stackWidth:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/nickkurochkin/Desktop/FloatingSideMenu/FloatingSideMenu/SideMenuItem.swift",
+      "line": 47,
+      "symbol": "SideMenuItemCell.icon",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/nickkurochkin/Desktop/FloatingSideMenu/FloatingSideMenu/SideMenuItem.swift",
+      "line": 54,
+      "symbol": "SideMenuItemCell.title",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/nickkurochkin/Desktop/FloatingSideMenu/FloatingSideMenu/SideMenuItem.swift",
+      "line": 62,
+      "symbol": "SideMenuItemCell.titleLeadingConstraint",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/nickkurochkin/Desktop/FloatingSideMenu/FloatingSideMenu/SideMenuItem.swift",
+      "line": 64,
+      "symbol": "SideMenuItemCell.init(frame:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/nickkurochkin/Desktop/FloatingSideMenu/FloatingSideMenu/SideMenuItem.swift",
+      "line": 82,
+      "symbol": "SideMenuItemCell.init(coder:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/nickkurochkin/Desktop/FloatingSideMenu/FloatingSideMenu/SideMenuItem.swift",
+      "line": 86,
+      "symbol": "SideMenuItemCell.setData(item:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/nickkurochkin/Desktop/FloatingSideMenu/FloatingSideMenu/SideMenuItem.swift",
+      "line": 97,
+      "symbol": "SideMenuItemCell.select(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/nickkurochkin/Desktop/FloatingSideMenu/FloatingSideMenu/SideMenuItem.swift",
+      "line": 102,
+      "symbol": "SideMenuItemCell.cellHeight(stackWidth:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    }
+  ],
+  "source_directory": "/Users/nickkurochkin/Desktop/FloatingSideMenu"
+}
