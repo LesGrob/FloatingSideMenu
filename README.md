@@ -117,7 +117,7 @@ pod "FloatingSideMenu"
 ```
 
 ## Documentation
- - <a href="https://github.com/LesGrob/FloatingSideMenu/blob/master/docs/index.html">Documentation Link</a>
+Documentation for the project can be found <a href="https://lesgrob.github.io/FloatingSideMenu/">here</a>.
 
 ## License
 FloatingSideMenu is available under the MIT license. See the LICENSE file for more info.
