@@ -27,7 +27,7 @@ For example:
 var window: UIWindow?
 func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
     window = UIWindow(frame: UIScreen.main.bounds)
-    window?.rootViewController = setupSideMenu()
+    window?.rootViewController = menu
     window!.makeKeyAndVisible()
     return true
 }
@@ -115,6 +115,9 @@ it, simply add the following line to your Podfile:
 ```ruby
 pod "FloatingSideMenu"
 ```
+
+## Documentation
+ - <a href="https://github.com/LesGrob/FloatingSideMenu/blob/master/docs/index.html">Documentation Link</a>
 
 ## License
 FloatingSideMenu is available under the MIT license. See the LICENSE file for more info.
