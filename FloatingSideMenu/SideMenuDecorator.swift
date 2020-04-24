@@ -9,30 +9,36 @@
 import UIKit
 import Foundation
 
+/// Menu configuration & initialization.
 internal class SideMenuDecorator {
     private var controller: SideMenu!
     public var delegate: SideMenuDelegate?
     
     //    MARK:- configuration
+    /// Max size of view.
     var itemViewFullSize: CGSize { return controller.view.frame.size }
     
+    /// Medium size proportion.
     var mediumSizeProportion: CGFloat {
         let height = itemViewFullSize.height - 200
         return height/itemViewFullSize.height
     }
+    /// Medium size of view.
     var itemViewMediumSize: CGSize {
         return CGSize(width: itemViewFullSize.width * mediumSizeProportion, height: itemViewFullSize.height * mediumSizeProportion)
     }
     
+    /// Small size proportion.
     var smallSizeProportion: CGFloat {
         let height = (itemViewFullSize.height - 200)*0.858
         return height/itemViewFullSize.height
     }
+    /// Small size of view.
     var itemViewSmallSize: CGSize {
         return CGSize(width: itemViewFullSize.width*smallSizeProportion, height: itemViewFullSize.height*smallSizeProportion)
     }
     
-    
+    /// Height of item list.
     var itemListHeight: CGFloat {
         get {
             let maxListHeight = controller.view.frame.height - 200
@@ -41,11 +47,13 @@ internal class SideMenuDecorator {
         }
     }
     
+    /// Item list x procent of  itemViewFullSize.
     var itemListProcent: CGFloat = 0.69
     
+    /// Radius of collapsed controller view in menu.
     var controllerRadius: CGFloat = 20
     
-    //    MARK:- list of items
+    /// List of items.
     var itemList: UIStackView! = {
         let view = UIStackView()
         view.axis = .vertical
@@ -64,6 +72,9 @@ internal class SideMenuDecorator {
 
 //  MARK:- setup
 extension SideMenuDecorator {
+    /**
+     Basic menu data & view configuring.
+     */
     private func setupData() {
         for (index, item) in controller.items.enumerated() {
             // list item setup
@@ -101,6 +112,9 @@ extension SideMenuDecorator {
         }
     }
     
+    /**
+    Basic menu top & bottom views configuring.
+    */
     private func setupViews() {
         controller.view.addSubview(itemList)
         if let topView = controller.topView {
@@ -113,6 +127,9 @@ extension SideMenuDecorator {
         }
     }
     
+    /**
+    Menu list, top view & bottom view constraints configuring.
+    */
     private func setupConstraints() {
         //stack view
         controller.view.addConstraints([
@@ -142,6 +159,12 @@ extension SideMenuDecorator {
         }
     }
     
+    /**
+    Relayout view subviews.
+    - Parameters:
+        - proportion : proportion to previous frame size.
+        - view : view to relayout.
+    */
     private func relayoutSubviews(proportion: CGFloat, view: UIView) {
         for item in view.subviews {
             item.frame = CGRect(
@@ -155,6 +178,9 @@ extension SideMenuDecorator {
 
 //  MARK:- menu drawing functions
 extension SideMenuDecorator {
+    /**
+    Tap gesture recognizer action of menu list item.
+     */
     @objc func didSelectMenuItemView(_ gestureRecognizer: UIGestureRecognizer) {
         guard let index = gestureRecognizer.view?.tag, let delegate = delegate else { return }
         delegate.selectItem(index: index)

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>FloatingSideMenu  Reference</title>
+    <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="js/jquery.min.js" defer></script>
+    <script src="js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a title="FloatingSideMenu  Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="index.html">FloatingSideMenu Docs</a> (62% documented)</p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="index.html">FloatingSideMenu Reference</a>
+        <img id="carat" src="img/carat.png" />
+        FloatingSideMenu  Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Classes/SideMenu.html">SideMenu</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/SideMenuDecorator.html">SideMenuDecorator</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/SideMenuDrawer.html">SideMenuDrawer</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/SideMenuItem.html">SideMenuItem</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/SideMenuItemCell.html">SideMenuItemCell</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/SideMenuItemController.html">SideMenuItemController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/SideMenuPath.html">SideMenuPath</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Enums.html">Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Enums/SideMenuState.html">SideMenuState</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Protocols/SideMenuDelegate.html">SideMenuDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/SideMenuItemCellDelegate.html">SideMenuItemCellDelegate</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            
+            <h1 id='floatingsidemenu' class='heading'>FloatingSideMenu</h1>
+<h2 id='about' class='heading'>About</h2>
+
+<p>Customizable side menu with floating design.</p>
+<h2 id='usage' class='heading'>Usage</h2>
+<h3 id='quickstart' class='heading'>Quickstart</h3>
+
+<p>Create menu items as <code><a href="Classes/SideMenuItem.html">SideMenuItem</a></code>.</p>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">view1</span> <span class="o">=</span> <span class="kt">SideMenuItemController</span><span class="p">()</span>
+<span class="n">view1</span><span class="o">.</span><span class="n">view</span><span class="o">.</span><span class="n">backgroundColor</span> <span class="o">=</span> <span class="o">.</span><span class="n">green</span>
+<span class="k">let</span> <span class="nv">item1</span> <span class="o">=</span> <span class="kt">SideMenuItem</span><span class="p">(</span><span class="nv">icon</span><span class="p">:</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">title</span><span class="p">:</span> <span class="s">"Green Page"</span><span class="p">,</span> <span class="nv">viewController</span><span class="p">:</span> <span class="n">view1</span><span class="p">)</span>
+
+<span class="k">let</span> <span class="nv">view2</span> <span class="o">=</span> <span class="kt">SideMenuItemController</span><span class="p">()</span>
+<span class="n">view2</span><span class="o">.</span><span class="n">view</span><span class="o">.</span><span class="n">backgroundColor</span> <span class="o">=</span> <span class="o">.</span><span class="n">yellow</span>
+<span class="k">let</span> <span class="nv">item2</span> <span class="o">=</span> <span class="kt">SideMenuItem</span><span class="p">(</span><span class="nv">icon</span><span class="p">:</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">title</span><span class="p">:</span> <span class="s">"Yellow Page"</span><span class="p">,</span> <span class="nv">viewController</span><span class="p">:</span> <span class="n">view2</span><span class="p">)</span>
+</code></pre>
+
+<p>Initialize menu with array of items.</p>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">menu</span> <span class="o">=</span> <span class="kt">SideMenu</span><span class="p">(</span><span class="nv">items</span><span class="p">:</span> <span class="p">[</span><span class="n">item1</span><span class="p">,</span> <span class="n">item2</span><span class="p">])</span>
+</code></pre>
+
+<p>Then use menu as you need.
+For example:</p>
+<pre class="highlight swift"><code><span class="k">var</span> <span class="nv">window</span><span class="p">:</span> <span class="kt">UIWindow</span><span class="p">?</span>
+<span class="kd">func</span> <span class="nf">application</span><span class="p">(</span><span class="n">_</span> <span class="nv">application</span><span class="p">:</span> <span class="kt">UIApplication</span><span class="p">,</span> <span class="n">didFinishLaunchingWithOptions</span> <span class="nv">launchOptions</span><span class="p">:</span> <span class="p">[</span><span class="kt">UIApplication</span><span class="o">.</span><span class="kt">LaunchOptionsKey</span><span class="p">:</span> <span class="kt">Any</span><span class="p">]?)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span> <span class="p">{</span>
+    <span class="n">window</span> <span class="o">=</span> <span class="kt">UIWindow</span><span class="p">(</span><span class="nv">frame</span><span class="p">:</span> <span class="kt">UIScreen</span><span class="o">.</span><span class="n">main</span><span class="o">.</span><span class="n">bounds</span><span class="p">)</span>
+    <span class="n">window</span><span class="p">?</span><span class="o">.</span><span class="n">rootViewController</span> <span class="o">=</span> <span class="n">menu</span>
+    <span class="n">window</span><span class="o">!.</span><span class="nf">makeKeyAndVisible</span><span class="p">()</span>
+    <span class="k">return</span> <span class="kc">true</span>
+<span class="p">}</span>
+</code></pre>
+<h4 id='views-proportioning' class='heading'>Views proportioning</h4>
+
+<p>All frames proportioning automatically, except views with constraints.
+In case you want to manually change the proportions, you can use the following variables:</p>
+
+<p><code><a href="Classes/SideMenuItemController.html#/s:16FloatingSideMenu0bC14ItemControllerC10proportion12CoreGraphics7CGFloatVvp">SideMenuItemController.proportion</a></code> - proportion to previous frame size.</p>
+
+<p><code><a href="Classes/SideMenuItemController.html#/s:16FloatingSideMenu0bC14ItemControllerC18absoluteProportion12CoreGraphics7CGFloatVvp">SideMenuItemController.absoluteProportion</a></code> - proportion to <code>UIScreen.main.bounds</code>.</p>
+
+<p>For example <code>absoluteProportion</code> can be used in table:</p>
+<pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">tableView</span><span class="p">(</span><span class="n">_</span> <span class="nv">tableView</span><span class="p">:</span> <span class="kt">UITableView</span><span class="p">,</span> <span class="n">heightForRowAt</span> <span class="nv">indexPath</span><span class="p">:</span> <span class="kt">IndexPath</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">CGFloat</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="mi">60</span> <span class="o">*</span> <span class="k">self</span><span class="o">.</span><span class="n">absoluteProportion</span>
+<span class="p">}</span>
+</code></pre>
+<h3 id='customization' class='heading'>Customization</h3>
+
+<p>You can easily customize menu style.</p>
+<h4 id='add-top-amp-bottom-views' class='heading'>Add top &amp; bottom views</h4>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">topView</span> <span class="o">=</span> <span class="kt">TopViewController</span><span class="p">()</span>
+<span class="k">let</span> <span class="nv">bottomView</span> <span class="o">=</span> <span class="kt">BottomViewController</span><span class="p">()</span>
+
+<span class="n">menu</span><span class="o">.</span><span class="n">topView</span> <span class="o">=</span> <span class="n">topView</span><span class="o">.</span><span class="n">view</span>
+<span class="n">menu</span><span class="o">.</span><span class="n">bottomView</span> <span class="o">=</span> <span class="n">bottomView</span><span class="o">.</span><span class="n">view</span>
+</code></pre>
+<h4 id='customize-menu-titles' class='heading'>Customize menu titles</h4>
+
+<p>Create custom class by inheriting <code>UIView</code> &amp; <code><a href="Protocols/SideMenuItemCellDelegate.html">SideMenuItemCellDelegate</a></code>.</p>
+<pre class="highlight swift"><code><span class="kd">class</span> <span class="kt">CustomSideMenuItemCell</span><span class="p">:</span> <span class="kt">UIView</span><span class="p">,</span> <span class="kt">SideMenuItemCellDelegate</span> <span class="p">{</span>
+    <span class="kd">func</span> <span class="nf">setData</span><span class="p">(</span><span class="nv">item</span><span class="p">:</span> <span class="kt">SideMenuItem</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">self</span><span class="o">.</span><span class="n">title</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">title</span>
+    <span class="p">}</span>
+
+    <span class="kd">func</span> <span class="nf">select</span><span class="p">(</span><span class="n">_</span> <span class="nv">select</span><span class="p">:</span> <span class="kt">Bool</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">title</span><span class="o">.</span><span class="n">textColor</span> <span class="o">=</span> <span class="n">select</span> <span class="p">?</span> <span class="kt">UIColor</span><span class="o">.</span><span class="nv">red</span> <span class="p">:</span> <span class="kt">UIColor</span><span class="o">.</span><span class="n">black</span>
+    <span class="p">}</span>
+
+    <span class="kd">static</span> <span class="kd">func</span> <span class="nf">cellHeight</span><span class="p">(</span><span class="nv">stackWidth</span><span class="p">:</span> <span class="kt">CGFloat</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">CGFloat</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="mi">52</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+
+<p>Then set it in menu object.</p>
+<pre class="highlight swift"><code><span class="n">menu</span><span class="o">.</span><span class="n">menuItemCellClass</span> <span class="o">=</span> <span class="kt">CustomSideMenuItemCell</span><span class="o">.</span><span class="k">self</span>
+</code></pre>
+<h4 id='menu-configuration' class='heading'>Menu configuration</h4>
+<pre class="highlight swift"><code><span class="kt">SideMenu</span><span class="o">.</span><span class="nv">disableViewInteraction</span><span class="p">:</span> <span class="kt">Bool</span>
+</code></pre>
+
+<ul>
+<li>disable interaction on view when it collapsed. <code>true</code> by default.
+<code>swift 
+SideMenu.openSwipeIsEnabled: Bool
+</code></li>
+<li>enable swipe to expand view. <code>true</code> by default.
+<code>swift 
+SideMenu.closeSwipeIsEnabled: Bool
+</code></li>
+<li>enable swipe to collapse view. <code>true</code> by default.</li>
+</ul>
+<h2 id='demo' class='heading'>Demo</h2>
+
+<p align="left"><img height="600" src="https://raw.githubusercontent.com/LesGrob/FloatingSideMenu/master/Screenshots/FloatingSideMenu-demo.gif" /></p>
+<h2 id='requirements' class='heading'>Requirements</h2>
+
+<ul>
+<li>iOS 11.0+</li>
+<li>Swift 4.2+</li>
+<li>Xcode 10.1+</li>
+</ul>
+<h2 id='installation' class='heading'>Installation</h2>
+<h3 id='cocoapods' class='heading'>CocoaPods</h3>
+
+<p>FloatingSideMenu is available through <a href="http://cocoapods.org">CocoaPods</a>. To install
+it, simply add the following line to your Podfile:</p>
+<pre class="highlight ruby"><code><span class="n">pod</span> <span class="s2">"FloatingSideMenu"</span>
+</code></pre>
+<h2 id='license' class='heading'>License</h2>
+
+<p>FloatingSideMenu is available under the MIT license. See the LICENSE file for more info.</p>
+
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2020 <a class="link" href="https://github.com/LesGrob/FloatingSideMenu" target="_blank" rel="external">Nikita Kurochkin</a>. All rights reserved. (Last updated: 2020-04-24)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.2</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

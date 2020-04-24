@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name                = "FloatingSideMenu"
-  s.version             = "1.0.2"
+  s.version             = "1.0.3"
   s.summary             = "Side menu with floating design."
   s.description         = "Customizable side menu with floating design."
   s.homepage            = "https://github.com/LesGrob/FloatingSideMenu"

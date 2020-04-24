@@ -9,6 +9,21 @@
 import Foundation
 import UIKit
 
+/// Menu drawer delegate
+public protocol SideMenuDelegate {
+    /**
+    Call this function to change menu state.
+    */
+    func toggleMenu()
+    /**
+    Call this function to select menu item.
+    - Parameters:
+        - index : index of item to show.
+    */
+    func selectItem(index: Int)
+}
+
+/// Menu drawer. Contains all drawing logic.
 internal class SideMenuDrawer {
     private var controller: SideMenu!
     private var decorator: SideMenuDecorator!
@@ -35,6 +50,11 @@ internal class SideMenuDrawer {
 
 //  MARK:- menu drawing functions
 extension SideMenuDrawer {
+    /**
+    Drawing menu after menu item selection.
+    - Parameters:
+        - path : selected menu path.
+    */
     func drawMenu(for path: SideMenuPath) {
         guard controller.validPath(path: path) else { return }
         let oldPath = controller.path
@@ -54,7 +74,7 @@ extension SideMenuDrawer {
                         with: rect,
                         alpha: 0)
                     
-                   self.disableViewIteraction(viewController: self.controller.items[index].viewController, true)
+                   self.disableViewInteraction(viewController: self.controller.items[index].viewController, true)
                 }
             }
             
@@ -72,7 +92,7 @@ extension SideMenuDrawer {
                     with: rect,
                     alpha: 0.5)
                 
-                self.disableViewIteraction(viewController: self.controller.items[previousIndex].viewController, true)
+                self.disableViewInteraction(viewController: self.controller.items[previousIndex].viewController, true)
             }
             
             if let selectedIndex = path.selectedIndex {
@@ -90,7 +110,7 @@ extension SideMenuDrawer {
                     alpha: 1)
                 self.controller.view.bringSubviewToFront(self.controller.items[selectedIndex].viewController.view)
                
-                self.disableViewIteraction(viewController: self.controller.items[selectedIndex].viewController, true)
+                self.disableViewInteraction(viewController: self.controller.items[selectedIndex].viewController, true)
             }
             
             self.drawItemList(for: path)
@@ -100,6 +120,9 @@ extension SideMenuDrawer {
 
 //  MARK:- controller drawing functions
 extension SideMenuDrawer {
+    /**
+    Menu item controller expanding.
+    */
     private func expandController() {
         guard let index = controller.path.selectedIndex else { return }
         
@@ -117,10 +140,13 @@ extension SideMenuDrawer {
             self.controller.items[index].viewController.view.layer.cornerRadius = 0
         }, completion: { _ in
             self.menuState = .controller
-            self.disableViewIteraction(viewController: self.controller.items[index].viewController, false)
+            self.disableViewInteraction(viewController: self.controller.items[index].viewController, false)
         })
     }
     
+    /**
+    Menu item controller collapsing.
+    */
     private func collapseController() {
         guard let index = controller.path.selectedIndex else { return }
         
@@ -142,17 +168,23 @@ extension SideMenuDrawer {
             self.controller.items[index].viewController.view.layer.cornerRadius = self.decorator.controllerRadius
         }, completion: { _ in
             self.menuState = .menu
-            self.disableViewIteraction(viewController: self.controller.items[index].viewController, true)
+            self.disableViewInteraction(viewController: self.controller.items[index].viewController, true)
         })
     }
 }
 
 extension SideMenuDrawer {
+    /**
+    Tap gesture recognizer action of controller.
+    */
     @objc func didSelectControllerView(_ gestureRecognizer: UIGestureRecognizer) {
         guard controller.menuState != .controller, let _ = gestureRecognizer.view?.tag else { return }
         toggleMenu()
     }
     
+    /**
+    Slide gesture recognizer action of controller.
+    */
     @objc func slideController(_ recognizer: UIPanGestureRecognizer) {
         guard let index = recognizer.view?.tag, index == controller.path.selectedIndex else { return }
         
@@ -215,6 +247,11 @@ extension SideMenuDrawer {
 
 //  MARK:- subviews Drawing
 extension SideMenuDrawer {
+    /**
+    Drawing menu list after menu item selection.
+    - Parameters:
+        - path : selected menu path.
+    */
     private func drawItemList(for path: SideMenuPath) {
         for (index, item) in self.decorator.itemList.subviews.enumerated() {
             guard let view = item as? SideMenuItemCellDelegate else { continue }
@@ -222,17 +259,30 @@ extension SideMenuDrawer {
         }
     }
     
+    /**
+    Relayout controller view after selection.
+    - Parameters:
+        - viewController : viewController for relayout.
+        - frame : new view frame.
+        - alpha : new view opacity.
+    */
     private func relayoutView(viewController: SideMenuItemController, with frame: CGRect, alpha: CGFloat) {
         let proportion = frame.height / viewController.view.frame.height
         viewController.view.frame = frame
         viewController.view.alpha = alpha
         viewController.absoluteProportion = 1/(UIScreen.main.bounds.height / frame.height)
-        viewController.relayoutSubviews(proportion: proportion)
+        viewController.relayoutViewWithSubviews(proportion: proportion)
     }
     
-    private func disableViewIteraction(viewController: SideMenuItemController, _ dimm: Bool) {
+    /**
+    Disable/enable view interaction .
+    - Parameters:
+        - viewController : viewController to change.
+        - dimm : disable/enable parameter.
+    */
+    private func disableViewInteraction(viewController: SideMenuItemController, _ dimm: Bool) {
         if controller.disableViewInteraction {
-            viewController.disableViewIteraction(dimm)
+            viewController.disableViewInteraction(dimm)
         }
     }
 }
